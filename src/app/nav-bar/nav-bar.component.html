@@ -1,0 +1,40 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'side' : 'side'"
+    [opened]="false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    
+    <mat-nav-list>
+      <a class="mat-list-item-tool" mat-list-item href="#">About</a>
+        <a class="mat-list-item-tool" mat-list-item href="#">Executive Body</a>
+        <a class="mat-list-item-tool" mat-list-item href="#">Student Committee</a>
+        <a class="mat-list-item-tool" mat-list-item href="#">Gallery</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div style = "{{logoAlign}}"  >
+        <img style="height : 70px;cursor: pointer" class="logo" routerLink = "/" src="assets/logo.png">
+      </div>
+      <mat-nav-list style="display:inline-block; width: 100%; text-align: center; " *ngIf="!(isHandset$ | async)">
+        <a class="mat-list-item-tool" mat-list-item routerLink = '/about'>About</a>
+        <a class="mat-list-item-tool" mat-list-item routerLink="/executive-body">Executive Body</a>
+        <a class="mat-list-item-tool" mat-list-item routerLink="/student-body">Student Committee</a>
+        <a class="mat-list-item-tool" mat-list-item routerLink="/gallery">Gallery</a>
+      </mat-nav-list>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
